@@ -19,6 +19,8 @@
     </xs:sequence>
     <!-- Rating is an optional attribute on Hotel (decimal) as in the working example -->
     <xs:attribute name="Rating" type="xs:decimal" use="optional"/>
+    <!-- ID is optional attribute as well -->
+    <xs:attribute name="id" type="xs:string" use="optional" />
   </xs:complexType>
 
   <!-- Address type with required NearestAirport attribute -->

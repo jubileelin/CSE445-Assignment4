@@ -52,7 +52,7 @@
   </Hotel>
 
   <Hotel Rating="4.2">
-    <Name>JW Marriott Scottsdale Camelback Inn Resort & Spa</Name>
+    <Name>JW Marriott Scottsdale Camelback Inn Resort &amp; Spa</Name>
     <Phone>480-948-1700</Phone>
     <Address NearestAirport="Phoenix Sky Harbor">
       <Number>5402</Number>
@@ -87,7 +87,7 @@
   </Hotel>
 
   <Hotel Rating="4.1">
-    <Name>Fairfield Inn & Suites Phoenix North</Name>
+    <Name>Fairfield Inn &amp; Suites Phoenix North</Name>
     <Phone>602-788-5555</Phone>
     <Address NearestAirport="Phoenix Sky Harbor">
       <Number>247</Number>
