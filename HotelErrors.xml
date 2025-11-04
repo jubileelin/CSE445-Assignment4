@@ -1,16 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 
-<!-- 1) Root element intentionally incorrect (should be <Hotels>) -->
-<HotelRoot xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-          xsi:noNamespaceSchemaLocation="Hotels.xsd">
+<Hotels xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="Hotels.xsd">
 
-  <!-- 2) Missing required attribute 'id' here (schema requires id on Hotel) -->
+  <!-- 1) Missing required attribute 'id' on this Hotel (schema requires id) -->
   <Hotel>
     <Name>Westin</Name>
     <Phone>480-968-8885</Phone>
-    <Phone>800-937-8461</Phone>
-    <!-- 3) Missing NearestAirport attribute on Address (schema requires it) -->
-    <Address>
+    <Address NearestAirport="Sky Harbor">
       <Number>11</Number>
       <Street>E.7th St</Street>
       <City>Tempe</City>
@@ -20,12 +17,11 @@
     <Rating>4.2</Rating>
   </Hotel>
 
-  <!-- 4) Duplicate Name element (schema sequence allows only one Name) -->
+  <!-- 2) Address missing the required attribute NearestAirport -->
   <Hotel id="E0002">
     <Name>Hilton Garden Inn Phoenix</Name>
-    <Name>Hilton Duplicate Name</Name>
     <Phone>602-272-6888</Phone>
-    <Address NearestAirport="Sky Harbor">
+    <Address>
       <Number>2045</Number>
       <Street>East Indian School Rd</Street>
       <City>Phoenix</City>
@@ -34,11 +30,11 @@
     </Address>
   </Hotel>
 
-  <!-- 5) Wrong element order: Rating appears before Address (schema enforces sequence). -->
+  <!-- 3) Duplicate Name element (schema expects only one Name in sequence) -->
   <Hotel id="E0003">
     <Name>Embassy Suites Phoenix</Name>
+    <Name>Embassy Suites Duplicate</Name>
     <Phone>602-553-9999</Phone>
-    <Rating>4.0</Rating>
     <Address NearestAirport="Sky Harbor">
       <Number>4415</Number>
       <Street>East Washington St</Street>
@@ -46,10 +42,11 @@
       <State>AZ</State>
       <Zip>85034</Zip>
     </Address>
-  </Hotel>  
+  </Hotel>  <!-- 4) Wrong element order: Rating comes before Address (schema sequence requires Address then Rating) -->
   <Hotel id="E0004">
     <Name>Omni Scottsdale Resort</Name>
     <Phone>480-948-2100</Phone>
+    <Rating>4.3</Rating> <!-- out of order -->
     <Address NearestAirport="Sky Harbor">
       <Number>7000</Number>
       <Street>East Camelback Rd</Street>
@@ -59,4 +56,18 @@
     </Address>
   </Hotel>
 
-</HotelRoot>
+  <!-- 5) Unexpected element 'Extra' (not declared in schema under Hotel) -->
+  <Hotel id="E0005">
+    <Name>Arizona Grand Resort</Name>
+    <Phone>480-789-5300</Phone>
+    <Address NearestAirport="Sky Harbor">
+      <Number>8000</Number>
+      <Street>South Arizona Grand Pkwy</Street>
+      <City>Phoenix</City>
+      <State>AZ</State>
+      <Zip>85044</Zip>
+    </Address>
+    <Extra>this element is not in the schema</Extra>
+  </Hotel>
+
+</Hotels>
