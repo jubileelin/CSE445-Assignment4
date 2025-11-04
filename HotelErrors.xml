@@ -1,14 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!-- HotelsErrors.xml - intentionally contains 5 errors described in assignment -->
-<!-- 1) Root element name changed from Hotels -> Hotel (error 1) -->
-<Hotel xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-       xsi:noNamespaceSchemaLocation="Hotels.xsd">
 
-  <!-- 2) A required attribute is missing -> remove id on first Hotel (error 2) -->
+<!-- 1) Root element intentionally incorrect (should be <Hotels>) -->
+<HotelRoot xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+          xsi:noNamespaceSchemaLocation="Hotels.xsd">
+
+  <!-- 2) Missing required attribute 'id' here (schema requires id on Hotel) -->
   <Hotel>
     <Name>Westin</Name>
     <Phone>480-968-8885</Phone>
-    <Address NearestAirport="Sky Harbor">
+    <Phone>800-937-8461</Phone>
+    <!-- 3) Missing NearestAirport attribute on Address (schema requires it) -->
+    <Address>
       <Number>11</Number>
       <Street>E.7th St</Street>
       <City>Tempe</City>
@@ -18,10 +20,11 @@
     <Rating>4.2</Rating>
   </Hotel>
 
-  <!-- 3) A Phone element is missing on one hotel (error 3) -->
+  <!-- 4) Duplicate Name element (schema sequence allows only one Name) -->
   <Hotel id="E0002">
     <Name>Hilton Garden Inn Phoenix</Name>
-    <!-- Phone intentionally missing here -->
+    <Name>Hilton Duplicate Name</Name>
+    <Phone>602-272-6888</Phone>
     <Address NearestAirport="Sky Harbor">
       <Number>2045</Number>
       <Street>East Indian School Rd</Street>
@@ -31,24 +34,21 @@
     </Address>
   </Hotel>
 
-  <!-- 4) An Address element has no closing tag (error 4): remove the </Address> closing tag -->
+  <!-- 5) Wrong element order: Rating appears before Address (schema enforces sequence). -->
   <Hotel id="E0003">
     <Name>Embassy Suites Phoenix</Name>
     <Phone>602-553-9999</Phone>
+    <Rating>4.0</Rating>
     <Address NearestAirport="Sky Harbor">
       <Number>4415</Number>
       <Street>East Washington St</Street>
       <City>Phoenix</City>
       <State>AZ</State>
       <Zip>85034</Zip>
-    <!-- MISSING </Address> HERE -->
-    <Rating>4.0</Rating>
-  </Hotel>
-
-  <!-- 5) Two names provided for one of the hotels (error 5) -->
+    </Address>
+  </Hotel>  
   <Hotel id="E0004">
     <Name>Omni Scottsdale Resort</Name>
-    <Name>Omni Scottsdale Resort DuplicateName</Name>
     <Phone>480-948-2100</Phone>
     <Address NearestAirport="Sky Harbor">
       <Number>7000</Number>
@@ -59,4 +59,4 @@
     </Address>
   </Hotel>
 
-</Hotel>
+</HotelRoot>
