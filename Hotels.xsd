@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!-- Hotels.xsd
--->
+     XML Schema for the Hotels example (follows the tree in the assignment).
+     Save this on your public repo and host it (e.g., GitHub Pages). -->
 <xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
            elementFormDefault="qualified"
            attributeFormDefault="unqualified">
@@ -9,17 +10,12 @@
   <xs:element name="Hotels">
     <xs:complexType>
       <xs:sequence>
-        <!-- Hotel can appear multiple times -->
         <xs:element name="Hotel" maxOccurs="unbounded">
           <xs:complexType>
             <xs:sequence>
-              <!-- Name must appear first -->
               <xs:element name="Name" type="xs:string"/>
-
-              <!-- Phone must appear at least once; many allowed -->
-              <xs:element name="Phone" type="xs:string" minOccurs="1" maxOccurs="unbounded"/>
-
-              <!-- Address element (child elements must appear in the order shown) -->
+              <!-- Phone may appear multiple times -->
+              <xs:element name="Phone" type="xs:string" minOccurs="0" maxOccurs="unbounded"/>
               <xs:element name="Address">
                 <xs:complexType>
                   <xs:sequence>
@@ -29,15 +25,15 @@
                     <xs:element name="State" type="xs:string"/>
                     <xs:element name="Zip" type="xs:string"/>
                   </xs:sequence>
-                  <!-- required attribute on Address -->
+                  <!-- NearestAirport is required attribute according to diagram (implements as required attribute of Address) -->
                   <xs:attribute name="NearestAirport" type="xs:string" use="required"/>
                 </xs:complexType>
-              </xs:element>              <!-- Rating is optional -->
+              </xs:element>              <!-- Rating is optional element -->
               <xs:element name="Rating" type="xs:string" minOccurs="0"/>
             </xs:sequence>
-
-            <!-- Hotel attributes: 'id' required, 'notes' optional -->
+            <!-- Example of a required attribute on Hotel (e.g., 'id' required). Adjust name if needed. -->
             <xs:attribute name="id" type="xs:string" use="required"/>
+            <!-- Optional attribute example -->
             <xs:attribute name="notes" type="xs:string" use="optional"/>
           </xs:complexType>
         </xs:element>

@@ -1,12 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!-- Hotels.xml - Valid instance of Hotels.xsd
-     Contains the required Westin sample (first) + 10 additional hotels (11 total).
-     Save and host this file (UTF-8 without BOM).
--->
+<!-- Hotels.xml - an instance of Hotels.xsd -->
 <Hotels xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
         xsi:noNamespaceSchemaLocation="Hotels.xsd">
 
-  <!-- Required example from assignment - must match exactly -->
   <Hotel id="H0001" notes="assignment-sample">
     <Name>Westin</Name>
     <Phone>480-968-8885</Phone>
@@ -21,7 +17,6 @@
     <Rating>4.2</Rating>
   </Hotel>
 
-  <!-- Ten additional hotels (realistic sample data). Some include optional 'notes' attribute. -->
   <Hotel id="H0002">
     <Name>Hilton Garden Inn Phoenix</Name>
     <Phone>602-272-6888</Phone>
@@ -35,7 +30,7 @@
     <Rating>4.0</Rating>
   </Hotel>
 
-  <Hotel id="H0003" notes="two-phones">
+  <Hotel id="H0003" notes="has two phones">
     <Name>Embassy Suites Phoenix</Name>
     <Phone>602-553-9999</Phone>
     <Phone>602-553-7777</Phone>
@@ -61,7 +56,7 @@
     <Rating>4.3</Rating>
   </Hotel>
 
-  <Hotel id="H0005" notes="no-rating">
+  <Hotel id="H0005">
     <Name>Arizona Grand Resort</Name>
     <Phone>480-789-5300</Phone>
     <Address NearestAirport="Sky Harbor">
@@ -71,9 +66,7 @@
       <State>AZ</State>
       <Zip>85044</Zip>
     </Address>
-  </Hotel>
-
-  <Hotel id="H0006">
+  </Hotel>  <Hotel id="H0006">
     <Name>JW Marriott Phoenix</Name>
     <Phone>602-222-3800</Phone>
     <Address NearestAirport="Sky Harbor">
@@ -98,7 +91,7 @@
     </Address>
   </Hotel>
 
-  <Hotel id="H0008" notes="flagship">
+  <Hotel id="H0008">
     <Name>Fairmont Scottsdale Princess</Name>
     <Phone>480-585-4848</Phone>
     <Address NearestAirport="Sky Harbor">
