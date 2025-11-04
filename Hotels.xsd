@@ -1,44 +1,36 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!-- Hotels.xsd
-     XML Schema for the Hotels example (follows the tree in the assignment).
-     Save this on your public repo and host it (e.g., GitHub Pages). -->
-<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
-           elementFormDefault="qualified"
-           attributeFormDefault="unqualified">
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema">
 
   <!-- Root element -->
   <xs:element name="Hotels">
     <xs:complexType>
       <xs:sequence>
-        <xs:element name="Hotel" maxOccurs="unbounded">
-          <xs:complexType>
-            <xs:sequence>
-              <xs:element name="Name" type="xs:string"/>
-              <!-- Phone may appear multiple times -->
-              <xs:element name="Phone" type="xs:string" minOccurs="0" maxOccurs="unbounded"/>
-              <xs:element name="Address">
-                <xs:complexType>
-                  <xs:sequence>
-                    <xs:element name="Number" type="xs:string"/>
-                    <xs:element name="Street" type="xs:string"/>
-                    <xs:element name="City" type="xs:string"/>
-                    <xs:element name="State" type="xs:string"/>
-                    <xs:element name="Zip" type="xs:string"/>
-                  </xs:sequence>
-                  <!-- NearestAirport is required attribute according to diagram (implements as required attribute of Address) -->
-                  <xs:attribute name="NearestAirport" type="xs:string" use="required"/>
-                </xs:complexType>
-              </xs:element>              <!-- Rating is optional element -->
-              <xs:element name="Rating" type="xs:string" minOccurs="0"/>
-            </xs:sequence>
-            <!-- Example of a required attribute on Hotel (e.g., 'id' required). Adjust name if needed. -->
-            <xs:attribute name="id" type="xs:string" use="required"/>
-            <!-- Optional attribute example -->
-            <xs:attribute name="notes" type="xs:string" use="optional"/>
-          </xs:complexType>
-        </xs:element>
+        <xs:element name="Hotel" type="HotelType" minOccurs="1" maxOccurs="unbounded"/>
       </xs:sequence>
     </xs:complexType>
   </xs:element>
+
+  <!-- Hotel type definition: Name, Phone (1..unbounded), Address, and optional Rating attribute -->
+  <xs:complexType name="HotelType">
+    <xs:sequence>
+      <xs:element name="Name" type="xs:string"/>
+      <xs:element name="Phone" type="xs:string" minOccurs="1" maxOccurs="unbounded"/>
+      <xs:element name="Address" type="AddressType"/>
+    </xs:sequence>
+    <!-- Rating is an optional attribute on Hotel (decimal) as in the working example -->
+    <xs:attribute name="Rating" type="xs:decimal" use="optional"/>
+  </xs:complexType>
+
+  <!-- Address type with required NearestAirport attribute -->
+  <xs:complexType name="AddressType">
+    <xs:sequence>
+      <xs:element name="Number" type="xs:string"/>
+      <xs:element name="Street" type="xs:string"/>
+      <xs:element name="City" type="xs:string"/>
+      <xs:element name="State" type="xs:string"/>
+      <xs:element name="Zip" type="xs:string"/>
+    </xs:sequence>
+    <xs:attribute name="NearestAirport" type="xs:string" use="required"/>
+  </xs:complexType>
 
 </xs:schema>
